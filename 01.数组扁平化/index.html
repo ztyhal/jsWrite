@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组扁平化</title>
+</head>
+
+<body>
+  <script>
+    // flat()方法
+    const arr = [1, [2, 3, [4, 5]], 6];
+    const res1 = arr.flat(Infinity)
+    console.log(res1);
+    // flat()方法的原理
+    Array.prototype.flat = function () {
+      let arr = [];
+      this.forEach(item => {
+        if (Array.isArray((item))) {
+          arr = arr.concat(item.flat())
+        } else {
+          arr.push(item)
+        }
+      })
+    }
+    // 使用reduce
+    const arr1 = [1, [2, [3, [4, 5]]], 6];
+    const flatten = arr => {
+      return arr.reduce((pre,cur)=>{
+        return pre.concat(Array.isArray(cur)?flatten(cur):cur);
+      },[])
+    }
+    const res2 = flatten(arr1);
+    console.log(res2);
+  </script>
+</body>
+
+</html>

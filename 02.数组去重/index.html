@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组去重</title>
+</head>
+<body>
+  <script>
+    const arr = [1,1,'1',17,true,true,false,false,'true','a',{},{}];
+    const res1 = Array.from(new Set(arr));
+//     Array.from()方法就是将一个类数组对象或者可遍历对象转换成一个真正的数组。
+
+    // 所谓类数组对象，最基本的要求就是具有length属性的对象。
+    // Set和Map类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在Set中，没有重复的key。
+    console.log(res1);
+  </script>
+</body>
+</html>
